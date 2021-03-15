@@ -1,0 +1,60 @@
+.nav {
+  grid-area: n;
+  background: green;
+  padding: 20px;
+}
+.item a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 10px;
+  display: block;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.item a:hover {
+  background: rgb(2, 109, 2);
+  transition: background-color 0.3s ease;
+}
+.item a.activeLink {
+  color: magenta;
+  transition: color 0.3s ease;
+  background: rgb(2, 100, 2);
+}
+.friends {
+  text-decoration: none;
+}
+.friendsLink {
+  text-decoration: none;
+  color: white;
+  margin-top: 20%;
+  padding: 15px 10px;
+  display: block;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.friendsLink:hover {
+  background: rgb(2, 109, 2);
+  transition: background-color 0.3s ease;
+}
+.friends .ava {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+.friensdAva {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
+}
+.avaName {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+
+}
