@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import storeContext from '../../storeContext';
 import s from './Navbar.module.css';
 
 const Navbar = (props) => {
-  let imgElements = props.state.map( i =><NavLink to='/dialogs'>
+  
+   
+  
+  return ( <storeContext.Consumer >
+    { (store) => {
+      let imgElements = store.getState().navbar.map( i =><NavLink to='/dialogs'>
       <img className={s.ava} src={i.src} alt='foto'/>
       <p className={s.avaName}>{i.name}</p>
     </NavLink>);
-   
-  
-  return (
-    <nav className={s.nav}>
+    return (<nav className={s.nav}>
       <div className={s.item}>
         <NavLink activeClassName={s.activeLink} to="/profile">
           Profile
@@ -49,7 +52,9 @@ const Navbar = (props) => {
           {imgElements}
         </div>
       </div>
-    </nav>
+    </nav>)
+}}
+    </storeContext.Consumer>
   );
 }
 

@@ -10,23 +10,27 @@ import Music from './components/Music/Music'
 import Settings from "./components/Settings/Settings";
 import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import storeContext from "./storeContext";
+import store from "./redux/reduxStore";
 
 
 const App = (props) => {
   return (
     <BrowserRouter>
-      <div className="app-container">
-        <Header />
-        <Navbar state={props.state.navbar}/>
-        <div className="app-container-content">
-          <Route path="/dialogs" render={() => <DialogsContainer store={props.store} />}/>
-          <Route path="/profile" render={() => <Profile store={props.store}/>}/>
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/friends" component={Friends} />          
+      <storeContext.Provider value={store} >
+        <div className="app-container">
+          <Header />
+          <Navbar />
+          <div className="app-container-content">
+            <Route path="/dialogs" render={() => <DialogsContainer /> }/>
+            <Route path="/profile" render={() => <Profile /> }/>
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" component={Music} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/friends" component={Friends} />          
+          </div>
         </div>
-      </div>
+      </storeContext.Provider>
     </BrowserRouter>
   );
 };
