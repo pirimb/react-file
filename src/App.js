@@ -10,17 +10,17 @@ import Music from './components/Music/Music'
 import Settings from "./components/Settings/Settings";
 import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import storeContext from "./storeContext";
 import store from "./redux/reduxStore";
+import { Provider } from "react-redux";
 
 
 const App = (props) => {
   return (
     <BrowserRouter>
-      <storeContext.Provider value={store} >
+      <Provider store={store} >
         <div className="app-container">
           <Header />
-          <Navbar />
+          <Navbar store={store}/>
           <div className="app-container-content">
             <Route path="/dialogs" render={() => <DialogsContainer /> }/>
             <Route path="/profile" render={() => <Profile /> }/>
@@ -30,7 +30,7 @@ const App = (props) => {
             <Route path="/friends" component={Friends} />          
           </div>
         </div>
-      </storeContext.Provider>
+      </Provider>
     </BrowserRouter>
   );
 };
