@@ -4,7 +4,7 @@ import s from './Navbar.module.css';
 
 const Navbar = (props) => {
   
-  let imgElements = props.store.getState().navbar.map( i =><NavLink to='/dialogs'>
+  let imgElements = props.store.getState().navbar.map( i =><NavLink key={i.id} to='/dialogs'>
   <img className={s.ava} src={i.src} alt='foto'/>
   <p className={s.avaName}>{i.name}</p>
   </NavLink>)

@@ -12,6 +12,7 @@
 }
 .userContainer {
     display: flex;
+    margin-bottom: 20px;
 }
 .infoContainer {
     width: 70%;
