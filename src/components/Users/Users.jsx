@@ -1,6 +1,8 @@
 import s from './Users.module.css';
 import userPhoto from './../../assets/images/user.jpg'
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 
 let Users = (props) => {
@@ -31,8 +33,21 @@ let Users = (props) => {
                         </div>
                         <div>
                             {u.followed 
-                                ? <button onClick={() => props.toggleFollow(u.id)}>Unfollow</button> 
-                                : <button onClick={() => props.toggleFollow(u.id)}>Follow</button> }
+                                ? <button onClick={() => {
+                                    usersAPI.unfollow(u.id).then(data => {
+                                                if (data.resultCode === 0) {
+                                                    props.toggleFollow(u.id)
+                                                }
+                                            });
+                                    }}>Unfollow</button> 
+
+                                : <button onClick={() => {
+                                        usersAPI.follow(u.id).then(data => {                                                
+                                                if (data.resultCode === 0) {
+                                                    props.toggleFollow(u.id)
+                                                }
+                                        });                                    
+                                    }}>Follow</button> }
                         </div>
                     </div>
                     <div className={s.infoContainer}>
