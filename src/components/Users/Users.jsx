@@ -33,25 +33,11 @@ let Users = (props) => {
                         </div>
                         <div className={s.btnContainer}>
                             {u.followed 
-                                ? <button className={s.btn} disabled={props.followInProgress.some(id => id === u.id)} onClick={() => {
-                                        props.toggleFollowInProgress(true, u.id);
-                                        usersAPI.unfollow(u.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.toggleFollow(u.id)                                                    
-                                                }
-                                                props.toggleFollowInProgress(false, u.id);
-                                            });
-                                    }}>Unfollow</button> 
+                                ? <button className={s.btn} disabled={props.followInProgress.some(id => id === u.id)}
+                                    onClick={() => { props.unfollow(u.id) }}>Unfollow</button> 
 
-                                : <button className={s.btn} disabled={props.followInProgress.some(id => id === u.id)} onClick={() => {
-                                        props.toggleFollowInProgress(true, u.id);
-                                        usersAPI.follow(u.id).then(data => {                                                
-                                                if (data.resultCode === 0) {                                                    
-                                                    props.toggleFollow(u.id)
-                                                }
-                                                props.toggleFollowInProgress(false, u.id);
-                                            });                                    
-                                    }}>Follow</button> }
+                                : <button className={s.btn} disabled={props.followInProgress.some(id => id === u.id)} 
+                                    onClick={() => { props.follow(u.id) }}>Follow</button> }
                         </div>
                     </div>
                     <div className={s.infoContainer}>
