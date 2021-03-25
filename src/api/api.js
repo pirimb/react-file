@@ -11,6 +11,12 @@ const instance = axios.create({
 export const authAPI = {
     isAuth() {
         return instance.get(`auth/me`)
+    },
+    login() {
+        return instance.post(`auth/login`,{})
+    },
+    logout() {
+        return instance.post(`auth/login`)
     }
 }
 
@@ -41,6 +47,4 @@ export const profileAPI = {
         return instance.put(`profile/status`,{ status: status })
     }
 }
-
-
 
