@@ -30,7 +30,7 @@ const App = (props) => {
             <Route path="/music" render={Music} />
             <Route path="/settings" render={Settings} />
             <Route path="/friends" render={Friends} />          
-            <Route path="/login" render={Login} />          
+            <Route path="/login" render={() => <Login/>} />          
           </div>
         </div>
       </Provider>

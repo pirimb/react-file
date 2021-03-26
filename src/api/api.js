@@ -12,11 +12,14 @@ export const authAPI = {
     isAuth() {
         return instance.get(`auth/me`)
     },
-    login() {
-        return instance.post(`auth/login`,{})
+    login(email, password, rememberMe=false) {
+        return instance.post(`auth/login`,{ email, password, rememberMe })
     },
     logout() {
-        return instance.post(`auth/login`)
+        return instance.delete(`auth/login`)
+    },
+    captcha() {
+        return instance.get(`security/get-captcha-url`)
     }
 }
 
