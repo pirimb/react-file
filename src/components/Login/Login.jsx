@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form"
 import { login } from "../../redux/authReducer"
 import { required } from "../../utilities/validators/validators"
 import { Element } from "../common/FormsControls/FormControls"
+import s from '../common/FormsControls/FormControls.module.css'
 
 const Input = Element('input')
 
@@ -21,6 +22,9 @@ const LoginForm = (props) => {
             <div>
                 <Field component="input" name='rememberMe' type="checkBox"/>Remember me
             </div>
+            { props.error && <div className={s.formSummaryError}>
+                {props.error}
+            </div>}
             <div>
                 <button>Login</button>
             </div>
@@ -28,7 +32,7 @@ const LoginForm = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm({form: 'Login'})(LoginForm)
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
