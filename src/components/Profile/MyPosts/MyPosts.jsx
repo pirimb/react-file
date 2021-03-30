@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
@@ -6,24 +6,23 @@ import { maxLength, required } from "../../../utilities/validators/validators";
 import { Element } from "../../common/FormsControls/FormControls";
 
 
-const MyPosts = (props) => {
-    let postsElement = props.posts.map( p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
+const MyPosts = React.memo((props) => {
+    let postsElement = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />);
 
+    const onAddPost = values => {
+        props.addPost(values.newPostText);
+    };
   
-    const onAddPost = (values) => {
-        props.addPost(values.newPostText)
-    }
-
-  return (
+    return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <AddPostFormRedux onSubmit={onAddPost} />
             <div className={s.posts}>
-                { postsElement }       
+                {postsElement}       
             </div>
         </div>
-    );
-};
+    )
+});
 
 const maxLength10 = maxLength(10)
 const Textarea = Element('textarea')
