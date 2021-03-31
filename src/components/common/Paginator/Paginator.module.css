@@ -1,0 +1,10 @@
+.selectedPage {
+    font-weight: bold;
+}
+.pages {
+    margin-left: 10px;
+}
+.pagesContainer {
+    width: 100%;
+    margin: 0 auto;
+}

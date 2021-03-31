@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
@@ -7,9 +7,11 @@ import { Element } from "../../common/FormsControls/FormControls";
 
 
 const MyPosts = React.memo((props) => {
-    let postsElement = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />);
+    let postsElement = [...props.posts]
+        .reverse()
+        .map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />);
 
-    const onAddPost = values => {
+    const onAddPost = (values) => {
         props.addPost(values.newPostText);
     };
   

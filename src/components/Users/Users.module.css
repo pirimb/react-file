@@ -30,6 +30,4 @@
     display: flex;
     justify-content: space-between;
 }
-.selectedPage {
-    font-weight: bold;
-}
+
