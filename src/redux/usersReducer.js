@@ -6,6 +6,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_FOLLOW_IN_PROGRESS = 'TOGGLE_FOLLOW_IN_PROGRESS'
+const SET_PORTION_PAGE_NUMBER = 'SET_PORTION_PAGE_NUMBER'
 
 let initialState = {
     users: [],
@@ -39,7 +40,7 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, currentPage: action.currentPage }
         }
         case SET_USERS_TOTAL_COUNT:{
-            return { ...state, totalUsersCount: action.count /150 }
+            return { ...state, totalUsersCount: action.count }
         }
         case TOGGLE_IS_FETCHING:{
             return { ...state, isFetching: action.isFetching }

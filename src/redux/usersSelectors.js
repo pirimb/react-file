@@ -18,6 +18,9 @@ export const getIsFetching = (state) => {
 export const getFollowInProgress = (state) => {
     return state.usersPage.followInProgress
 }
+export const getPortionSize = (state) => {
+    return state.usersPage.portionSize
+}
 
 export const getUsersSelector = createSelector(getUsersState, (users) => {
     return users.filter(u => true)

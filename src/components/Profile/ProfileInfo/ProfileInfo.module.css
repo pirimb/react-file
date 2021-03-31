@@ -4,6 +4,7 @@
 .profilePhoto {
   width: 200px;
   background-size: cover;
+  border-radius: 20px;
 }
 .descriptionBlock {
   display: flex;
