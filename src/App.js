@@ -5,7 +5,7 @@ import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
 import Music from './components/Music/Music'
 import Settings from "./components/Settings/Settings";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, withRouter } from "react-router-dom";
 import store from "./redux/reduxStore";
 import { connect, Provider } from "react-redux";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -58,11 +58,11 @@ let AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter >
         <Provider store={store} > 
             <AppContainer />
         </Provider>
-    </BrowserRouter> 
+    </HashRouter> 
   )
 }
 

@@ -2,9 +2,10 @@
   padding: 20px;
 }
 .profilePhoto {
-  width: 200px;
+  max-width: 200px;
   background-size: cover;
   border-radius: 20px;
+  position: relative;
 }
 .descriptionBlock {
   display: flex;
@@ -15,4 +16,23 @@
   display: flex;
   flex-direction: column;
   margin-top: 150px;
+}
+.choosePhotoButton {
+  position: absolute;
+  top: 100px;
+  opacity: 0;
+  transform: all .4s ease;
+}
+.choosePhotoButton:hover {
+  opacity: 100%;
+  transform: all .4s ease;
+}
+.contact {
+  padding-left: 30px;
+}
+.dataForm {
+  display: flex;
+}
+.displayNone {
+  display: none;
 }

@@ -50,7 +50,7 @@ const Navbar = (props) => {
         >
           Friends
         </NavLink>
-        <div className={s.friensdAva}>
+        <div className={s.friendsAva}>
           {imgElements}
         </div>
       </div>

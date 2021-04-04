@@ -11,3 +11,6 @@ export const Element = (Element) => ({input, meta, ...props}) => {
         </div>
     )
 }
+
+export const Input = Element('input')
+export const Textarea = Element('textarea')
