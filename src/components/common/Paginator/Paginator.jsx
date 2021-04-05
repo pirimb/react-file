@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import cn from 'classnames';
 import s from './Paginator.module.css';
 
 
@@ -23,7 +24,7 @@ let Paginator = (props) => {
                 {pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => {
-                    return <div key={p.id} className={`${s.pages} ${(props.currentPage === p && s.selectedPage)}`}
+                    return <div key={p.id} className={cn(s.pages,{[s.selectedPage] : props.currentPage === p})}
                         onClick={ () => { props.onPageChange(p)} }>{p}</div>
                 })}  
                 { portionCount > portionNumber && 
