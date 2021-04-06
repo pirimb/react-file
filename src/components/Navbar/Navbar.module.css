@@ -52,6 +52,9 @@
   justify-content: space-around;
   text-align: center;
 }
+.friendsAva a {
+  text-decoration: none;
+}
 .avaName {
   text-decoration: none;
   color: white;

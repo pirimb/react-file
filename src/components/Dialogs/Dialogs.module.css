@@ -8,7 +8,7 @@
     border-radius: 10px;
     background: rgb(157, 104, 243);
     padding: 20px;
-
+    border: 1px solid rgb(173, 130, 243);
 }
 /* .dialog.active {
     background: rgb(145, 89, 235);
@@ -50,6 +50,7 @@
     background: rgb(157, 104, 243);
     border-radius: 10px;
     padding: 20px;
+    border: 1px solid rgb(173, 130, 243);
 }
 
 .message {    

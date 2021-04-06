@@ -1,6 +1,16 @@
 .header {
     grid-area: h;
     background: rgb(28, 76, 92);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header .logoBlock {
+    padding-left: 20px;
+}
+.header .logo {
+    color: white;
+    text-decoration: none;
 }
 .header img {
     width: 80px;
@@ -9,10 +19,21 @@
     position: relative;
 }
 .loginBlock {
-    float: right;
+    padding-right: 20px;
+    max-width: 200px;
 }
 .loginBlock a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+}
+.headerUserPhoto {
+    max-width: 40px;
+    border-radius: 50%;
+}
+.loginPhotoBlock {
+    display: flex;
+    justify-content: space-between;
+    max-width: 150px;
+    width: 100%;
 }
