@@ -1,3 +1,4 @@
+import { photosType, postsType, profileType, contactsType } from './../types/types';
 import { profileAPI } from "../api/api"
 import { stopSubmit } from "redux-form";
 
@@ -14,12 +15,15 @@ let initialState = {
         {id:2, message: "It's my first post", likesCount: 42},
         {id:3, message: "It's my second post", likesCount: 23},
         {id:4, message: "Hi", likesCount: 42}
-    ],
-    profile: null,
-    status: ''
+    ] as Array<postsType>,
+    profile: null as profileType | null,
+    status: '',
+    newPostText: ''
 }
 
-const profileReducer = (state=initialState, action) => {
+type initialStateType = typeof initialState
+
+const profileReducer = (state=initialState, action: any): initialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -42,7 +46,7 @@ const profileReducer = (state=initialState, action) => {
             return {...state, posts: state.posts.filter(p => p.id != action.postId) }
         }  
         case UPDATE_PROFILE_PHOTO: {
-            return {...state, profile: {...state.profile, photos: action.photos} }
+            return {...state, profile: {...state.profile, photos: action.photos} as profileType }
         }  
         default:
             return state;    
@@ -50,33 +54,54 @@ const profileReducer = (state=initialState, action) => {
     
 }
 
-export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText}) 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setStatus = (status) => ({type: SET_STATUS, status})
-export const deletePost = (postId) => ({type: DELETE_POST, postId})
-export const updatePhotoSuccess = (photos) => ({type: UPDATE_PROFILE_PHOTO, photos})
+type addPostActionType = {
+    type: typeof ADD_POST,
+    newPostText: string
+}
+type setUserProfileActionType = {
+    type: typeof SET_USER_PROFILE,
+    profile: profileType
+}
+type setStatusActionType = {
+    type: typeof SET_STATUS,
+    status: string
+}
+type deletePostActionType = {
+    type: typeof DELETE_POST,
+    postId: number
+}
+type updatePhotoSuccessActionType = {
+    type: typeof UPDATE_PROFILE_PHOTO,
+    photos: photosType
+}
 
-export const getUserProfile = (userId) => async (dispatch) => {
+export const addPostActionCreator = (newPostText: string): addPostActionType => ({ type: ADD_POST, newPostText}) 
+export const setUserProfile = (profile: profileType): setUserProfileActionType => ({type: SET_USER_PROFILE, profile})
+export const setStatus = (status: string): setStatusActionType => ({type: SET_STATUS, status})
+export const deletePost = (postId: number): deletePostActionType => ({type: DELETE_POST, postId})
+export const updatePhotoSuccess = (photos: photosType): updatePhotoSuccessActionType => ({type: UPDATE_PROFILE_PHOTO, photos})
+
+export const getUserProfile = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
-export const getUserStatus = (userId) => async (dispatch) => {
+export const getUserStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setStatus(response.data))
 }
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status: string) => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0 ) {
         dispatch(setStatus(status))
     }
 }
-export const updatePhoto = (file) => async (dispatch) => {
+export const updatePhoto = (file: any) => async (dispatch: any) => {
     const response = await profileAPI.updatePhoto(file)
     if (response.data.resultCode === 0 ) {
         dispatch(updatePhotoSuccess(response.data.data.photos))
     }
 }
-export const saveChangedProfileData = (profileData) => async (dispatch, getState) => {
+export const saveChangedProfileData = (profileData: profileType) => async (dispatch: any, getState: any) => {
     const userId = getState().auth.userId
     const response = await profileAPI.updateProfileData(profileData)
     if (response.data.resultCode === 0) {
